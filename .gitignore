@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+data/
+pack/
+out/
+upd_body.json
+*_raw.png
+.env

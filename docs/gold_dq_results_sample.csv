@@ -1,0 +1,35 @@
+layer,check_name,value,status,run_ts,mlv_status
+gold,dim_customer key uniqueness,0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,dim_customer resolved id uniqueness,0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,dim_product key uniqueness,0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,dim_product sku uniqueness,0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,dim_store key uniqueness,0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,dim_store id uniqueness,0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,fct_order_line key uniqueness,0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,fct_order_line source line uniqueness,0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,RI fact->product (null product_key),0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,RI fact->store (POS null store_key),0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,RI fact->fulfilment store,0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,RI fact->customer,0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,RI fact->date,0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,metric: net + vat = gross (>1p),0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,metric: vat = net x rate (>5p),0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,metric: return sign (qty/net sign vs flag),0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,null transaction timestamp,0.0,PASS,2026-11-01 11:36:28.899557,created
+gold,null gross_sales,0.0,PASS,2026-11-01 11:36:28.899557,created
+recon,bronze->silver POS rows (diff),0.0,PASS,2026-11-01 11:36:28.899557,created
+recon,bronze->silver customers (distinct ids diff),0.0,PASS,2026-11-01 11:36:28.899557,created
+recon,bronze->silver products (distinct sku diff),0.0,PASS,2026-11-01 11:36:28.899557,created
+recon,bronze->silver stores (diff),0.0,PASS,2026-11-01 11:36:28.899557,created
+recon,silver->gold POS rows (diff),0.0,PASS,2026-11-01 11:36:28.899557,created
+recon,silver->gold ecom rows excl. cancelled (diff),0.0,PASS,2026-11-01 11:36:28.899557,created
+recon,"silver->gold net sales (diff, GBP)",0.0,PASS,2026-11-01 11:36:28.899557,created
+null-analysis,gold.dim_customer: % email null,5.11,INFO,2026-11-01 11:36:28.899557,created
+null-analysis,gold.dim_customer: % birth_date null,0.0,INFO,2026-11-01 11:36:28.899557,created
+null-analysis,gold.dim_customer: % email_consent null,1.75,INFO,2026-11-01 11:36:28.899557,created
+null-analysis,gold.dim_product: % unit_cost_gbp null,32.98,INFO,2026-11-01 11:36:28.899557,created
+null-analysis,gold.fct_order_line: % customer_key = -1,47.67,INFO,2026-11-01 11:36:28.899557,created
+summary,rows cancelled ecom lines excluded,22083.0,INFO,2026-11-01 11:36:28.899557,created
+summary,fact rows,391306.0,INFO,2026-11-01 11:36:28.899557,created
+summary,fact net_sales GBP,38764537.75,INFO,2026-11-01 11:36:28.899557,created
+summary,fact gross_sales GBP,45624952.15,INFO,2026-11-01 11:36:28.899557,created
